@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
     Product productToUpdate = Mapper.mapToProduct(productCreateDto);
     productToUpdate.setId(persistedProduct.getId());
 
-    return productRepository.save(persistedProduct);
+    return productRepository.save(productToUpdate);
   }
 
 }
