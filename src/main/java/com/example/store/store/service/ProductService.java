@@ -1,13 +1,13 @@
 package com.example.store.store.service;
 
-import com.example.store.store.model.Product;
-import com.example.store.store.model.ProductUpdater;
+import com.example.store.store.domain.dto.ProductCreateDto;
+import com.example.store.store.domain.jpa.Product;
 
 import java.util.List;
 
 public interface ProductService {
 
-    Product create(Product product);
+    Product create(ProductCreateDto productCreateDto);
 
     Product getById(Integer id);
 
@@ -15,5 +15,5 @@ public interface ProductService {
 
     void deleteById(Integer id);
 
-    void update(Integer id, ProductUpdater productUpdater);
+    Product update(Integer id, ProductCreateDto productCreateDto);
 }

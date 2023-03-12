@@ -1,4 +1,4 @@
-package com.example.store.store.model;
+package com.example.store.store.domain.jpa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +15,9 @@ public class Product {
     private String name;
 
     private double price;
+
+    public Product() {
+    }
 
     public Integer getId() {
         return id;
