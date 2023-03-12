@@ -30,7 +30,7 @@ class ProductServiceImplTest {
 
 
   @Test
-  void findById_whenProductExists_thenReturnResult() {
+  void testGetById_whenProductExists_thenReturnResult() {
     Mockito.when(productRepository.findById(1)).thenReturn(Optional.of(newProduct()));
     Product result = testClass.getById(1);
 
