@@ -1,6 +1,7 @@
 package com.example.store.store.service;
 
 import com.example.store.store.model.Product;
+import com.example.store.store.model.ProductUpdater;
 import com.example.store.store.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,22 +17,36 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product createProduct(Product product) {
+    public Product create(Product product) {
         return productRepository.save(product);
     }
 
     @Override
-    public Product getProductById(Integer productId) {
-        return productRepository.findById(productId).orElseThrow(()->new RuntimeException("Product with id: " + productId + " not found"));
+    public Product getById(Integer id) {
+        return productRepository.findById(id).orElseThrow(()->new RuntimeException("Product with id: " + id + " not found"));
     }
 
     @Override
-    public List<Product> getAllProducts() {
+    public List<Product> getAll() {
         return productRepository.findAll();
     }
 
     @Override
-    public void deleteProductById(Integer productId) {
-        productRepository.deleteById(productId);
+    public void deleteById(Integer id) {
+        try {
+            productRepository.deleteById(id);
+        } catch (Exception e) {
+            System.out.println("Could not delete product with id: " + id);
+        }
     }
+
+    @Override
+    public void update(Integer id, ProductUpdater productUpdater) {
+        Product product = productRepository.findById(id).orElseThrow();
+        product.setPrice(productUpdater.price);
+        product.setName(productUpdater.name);
+        productRepository.save(product);
+    }
+
+
 }
