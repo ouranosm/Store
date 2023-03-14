@@ -1,8 +1,6 @@
 package com.example.store.store.service;
 
-import com.example.store.store.domain.dto.ProductCreateDto;
 import com.example.store.store.domain.jpa.Product;
-import com.example.store.store.mapper.Mapper;
 import com.example.store.store.repository.ProductRepository;
 import java.util.List;
 import org.slf4j.Logger;
@@ -21,8 +19,7 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public Product create(ProductCreateDto productCreateDto) {
-    Product product = Mapper.mapToProduct(productCreateDto);
+  public Product create(Product product) {
     return productRepository.save(product);
   }
 
@@ -48,12 +45,9 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public Product update(Integer id, ProductCreateDto productCreateDto) {
-    Product persistedProduct = productRepository.findById(id).orElseThrow();
-
-    Product productToUpdate = Mapper.mapToProduct(productCreateDto);
-    productToUpdate.setId(persistedProduct.getId());
-
+  public Product update(Integer id, Product productToUpdate) {
+    Product persistedProduct = getById(id);
+    productToUpdate.setId(id);
     return productRepository.save(productToUpdate);
   }
 

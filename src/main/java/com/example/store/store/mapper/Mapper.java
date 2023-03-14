@@ -1,6 +1,7 @@
 package com.example.store.store.mapper;
 
 import com.example.store.store.domain.dto.ProductCreateDto;
+import com.example.store.store.domain.dto.ProductDto;
 import com.example.store.store.domain.jpa.Product;
 
 /**
@@ -18,4 +19,11 @@ public class Mapper {
     return product;
   }
 
+  public static ProductDto mapToProductDto(Product product) {
+    ProductDto productDto = new ProductDto();
+    productDto.setId(product.getId());
+    productDto.setName(product.getName());
+    productDto.setPrice(product.getPrice());
+    return productDto;
+  }
 }

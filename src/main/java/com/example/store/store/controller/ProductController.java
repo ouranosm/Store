@@ -1,7 +1,9 @@
 package com.example.store.store.controller;
 
 import com.example.store.store.domain.dto.ProductCreateDto;
+import com.example.store.store.domain.dto.ProductDto;
 import com.example.store.store.domain.jpa.Product;
+import com.example.store.store.mapper.Mapper;
 import com.example.store.store.service.ProductService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -31,13 +33,17 @@ public class ProductController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Product>> getAllProducts() {
-    return ResponseEntity.ok(productService.getAll());
+  public ResponseEntity<List<ProductDto>> getAllProducts() {
+    return ResponseEntity.ok(productService.getAll()
+        .stream().map(product -> Mapper.mapToProductDto(product)).toList());
   }
 
   @PostMapping
-  public ResponseEntity<Product> createProduct(@RequestBody ProductCreateDto productCreateDto) {
-    return new ResponseEntity<>(productService.create(productCreateDto), HttpStatus.CREATED);
+  public ResponseEntity<ProductDto> createProduct(@RequestBody ProductCreateDto productCreateDto) {
+    Product productToCreate = Mapper.mapToProduct(productCreateDto);
+    Product persistedProduct = productService.create(productToCreate);
+
+    return new ResponseEntity<>(Mapper.mapToProductDto(persistedProduct), HttpStatus.CREATED);
   }
 
   @DeleteMapping("/{id}")
@@ -46,9 +52,12 @@ public class ProductController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Product> updateProduct(@PathVariable Integer id,
+  public ResponseEntity<ProductDto> updateProduct(@PathVariable Integer id,
       @RequestBody ProductCreateDto productCreateDto) {
-    return new ResponseEntity<>(productService.update(id, productCreateDto), HttpStatus.OK);
+    Product productToUpdate = Mapper.mapToProduct(productCreateDto);
+    Product updatedProduct = productService.update(id, productToUpdate);
+    
+    return new ResponseEntity<>(Mapper.mapToProductDto(updatedProduct), HttpStatus.OK);
   }
 
 }
