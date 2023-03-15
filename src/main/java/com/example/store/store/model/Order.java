@@ -1,12 +1,11 @@
 package com.example.store.store.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
+
+@Entity(name = "orders")
 public class Order {
 
     @Id
@@ -15,8 +14,8 @@ public class Order {
 
     private double price;
 
-    @ManyToMany
-    Set<Customer> ordersCustomer;
+    @ManyToMany(mappedBy = "customerOrders")
+    Set<Customer> customerSet;
 
     public Integer getId() {
         return id;
@@ -35,10 +34,10 @@ public class Order {
     }
 
     public Set<Customer> getOrdersCustomer() {
-        return ordersCustomer;
+        return customerSet;
     }
 
-    public void setOrdersCustomer(Set<Customer> ordersCustomer) {
-        this.ordersCustomer = ordersCustomer;
+    public void setCustomerSet(Set<Customer> customerSet) {
+        this.customerSet = customerSet;
     }
 }

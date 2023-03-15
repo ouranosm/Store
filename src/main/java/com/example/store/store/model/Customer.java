@@ -15,6 +15,11 @@ public class Customer {
     private String address;
 
     @ManyToMany
+    @JoinTable(
+            name =  "customerOrders",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "orders_id")
+    )
     Set<Order> customerOrders;
 
     public Set<Order> getCustomerOrders() {
