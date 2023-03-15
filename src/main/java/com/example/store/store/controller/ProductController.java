@@ -1,7 +1,7 @@
 package com.example.store.store.controller;
 
 import com.example.store.store.model.Product;
-import com.example.store.store.model.ProductUpdater;
+import com.example.store.store.model.ProductUpdateDto;
 import com.example.store.store.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,10 +40,9 @@ public class ProductController {
     }
 
     @PostMapping("/{id}")
-    public void updateProduct(@PathVariable Integer id,@RequestBody ProductUpdater productUpdater) {
+    public void updateProduct(@PathVariable Integer id,@RequestBody ProductUpdateDto productUpdateDto) {
 
-
-        productService.update(id, productUpdater);
+        productService.update(id, productUpdateDto);
     }
 
 

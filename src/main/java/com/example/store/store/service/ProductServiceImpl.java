@@ -1,7 +1,7 @@
 package com.example.store.store.service;
 
 import com.example.store.store.model.Product;
-import com.example.store.store.model.ProductUpdater;
+import com.example.store.store.model.ProductUpdateDto;
 import com.example.store.store.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -41,10 +41,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(Integer id, ProductUpdater productUpdater) {
+    public void update(Integer id, ProductUpdateDto productUpdateDto) {
         Product product = productRepository.findById(id).orElseThrow();
-        product.setPrice(productUpdater.price);
-        product.setName(productUpdater.name);
+        product.setPrice(productUpdateDto.getPrice());
+        product.setName(productUpdateDto.getName());
         productRepository.save(product);
     }
 
