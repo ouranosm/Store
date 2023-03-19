@@ -6,11 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.math.BigDecimal;
-//@Entity
+@Entity
 public class OrderProductDto {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    public Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Integer id;
     private Integer productId;
     private BigDecimal quantity;
 

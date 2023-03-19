@@ -43,7 +43,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void update(Integer id, ProductUpdateDto productUpdateDto) {
+
         Product product = productRepository.findById(id).orElseThrow();
+
         product.setPrice(productUpdateDto.getPrice());
         product.setName(productUpdateDto.getName());
         productRepository.save(product);

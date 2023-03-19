@@ -34,6 +34,7 @@ public class OrderServiceImpl implements OrderService {
            tp = tp.add(product.getPrice().multiply(dto.getQuantity()));
         }
         order.setTotalPrice(tp);
+        order.setOrderProduct(createOrderWrapper.orderProductDtoSet);
         return orderRepository.save(order);
     }
 

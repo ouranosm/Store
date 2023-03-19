@@ -4,7 +4,9 @@ import com.example.store.store.model.dto.OrderProductDto;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity(name = "orders")
@@ -15,32 +17,18 @@ public class Order {
     private Integer id;
 
     private BigDecimal totalPrice;
-    //@OneToMany
 
-//    public List<OrderProductDto> orderProductDtoList;
-//
-//    public List<OrderProductDto> getOrderProductDtoList() {
-//        return orderProductDtoList;
-//    }
-//
-//    public void setOrderProductDtoList(List<OrderProductDto> orderProductDtoList) {
-//        this.orderProductDtoList = orderProductDtoList;
-//    }
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "orders_id", referencedColumnName = "id")
+    Set<OrderProductDto> orderProduct= new HashSet<>();
 
-    //    @OneToMany(mappedBy = "order")
-//    Set<Product> products;
-//    public Set<Product> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(Set<Product> products) {
-//        this.products = products;
-//    }
+    public Set<OrderProductDto> getOrderProduct() {
+        return orderProduct;
+    }
 
-
-
-//    @ManyToMany(mappedBy = "customerOrders")
-//    Set<Customer> customerSet;
+    public void setOrderProduct(Set<OrderProductDto> orderProduct) {
+        this.orderProduct = orderProduct;
+    }
 
     public Integer getId() {
         return id;
@@ -58,11 +46,5 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-//    public Set<Customer> getOrdersCustomer() {
-//        return customerSet;
-//    }
-//
-//    public void setCustomerSet(Set<Customer> customerSet) {
-//        this.customerSet = customerSet;
-//    }
+
 }
