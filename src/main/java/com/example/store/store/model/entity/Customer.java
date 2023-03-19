@@ -1,4 +1,4 @@
-package com.example.store.store.model;
+package com.example.store.store.model.entity;
 
 import jakarta.persistence.*;
 
@@ -14,21 +14,23 @@ public class Customer {
 
     private String address;
 
-    @ManyToMany
-    @JoinTable(
-            name =  "customerOrders",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "orders_id")
-    )
-    Set<Order> customerOrders;
 
-    public Set<Order> getCustomerOrders() {
-        return customerOrders;
-    }
 
-    public void setCustomerOrders(Set<Order> customerOrders) {
-        this.customerOrders = customerOrders;
-    }
+//    @ManyToMany
+//    @JoinTable(
+//            name =  "customerOrders",
+//            joinColumns = @JoinColumn(name = "customer_id"),
+//            inverseJoinColumns = @JoinColumn(name = "orders_id")
+//    )
+//    Set<Order> customerOrders;
+
+//    public Set<Order> getCustomerOrders() {
+//        return customerOrders;
+//    }
+//
+//    public void setCustomerOrders(Set<Order> customerOrders) {
+//        this.customerOrders = customerOrders;
+//    }
 
     public Integer getId() {
         return id;

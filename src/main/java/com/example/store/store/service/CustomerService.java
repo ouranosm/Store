@@ -1,7 +1,6 @@
 package com.example.store.store.service;
 
-import com.example.store.store.model.Customer;
-import com.example.store.store.model.Product;
+import com.example.store.store.model.entity.Customer;
 
 import java.util.List;
 

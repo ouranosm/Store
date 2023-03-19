@@ -1,7 +1,8 @@
 package com.example.store.store.controller;
 
-import com.example.store.store.model.Product;
-import com.example.store.store.model.ProductUpdateDto;
+import com.example.store.store.model.dto.OrderProductDto;
+import com.example.store.store.model.entity.Product;
+import com.example.store.store.model.dto.ProductUpdateDto;
 import com.example.store.store.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,6 @@
 package com.example.store.store.controller;
 
-import com.example.store.store.model.Customer;
-import com.example.store.store.model.Order;
+import com.example.store.store.model.entity.Customer;
 import com.example.store.store.service.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

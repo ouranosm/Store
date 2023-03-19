@@ -1,9 +1,8 @@
-package com.example.store.store.model;
+package com.example.store.store.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 
 @Entity
 public class Product {
@@ -14,7 +13,19 @@ public class Product {
 
     private String name;
 
-    private double price;
+    private BigDecimal price;
+
+//    @ManyToOne
+//    @JoinColumn(name = "orders_id")
+//    private Order order;
+
+//    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     public Integer getId() {
         return id;
@@ -32,11 +43,11 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

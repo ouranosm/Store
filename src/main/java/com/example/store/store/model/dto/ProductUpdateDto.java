@@ -1,10 +1,12 @@
-package com.example.store.store.model;
+package com.example.store.store.model.dto;
 
+
+import java.math.BigDecimal;
 
 public class ProductUpdateDto {
     private String name;
 
-    private double price;
+    private BigDecimal price;
 
     public String getName() {
         return name;
@@ -14,11 +16,11 @@ public class ProductUpdateDto {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

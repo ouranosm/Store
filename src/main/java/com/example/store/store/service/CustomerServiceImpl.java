@@ -1,6 +1,6 @@
 package com.example.store.store.service;
 
-import com.example.store.store.model.Customer;
+import com.example.store.store.model.entity.Customer;
 
 import com.example.store.store.repository.CustomerRepository;
 import org.springframework.stereotype.Service;

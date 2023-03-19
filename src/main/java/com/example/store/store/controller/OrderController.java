@@ -1,13 +1,16 @@
 package com.example.store.store.controller;
 
-import com.example.store.store.model.Order;
-import com.example.store.store.model.Product;
+import com.example.store.store.model.dto.CreateOrderWrapper;
+import com.example.store.store.model.dto.OrderProductDto;
+import com.example.store.store.model.entity.Order;
 import com.example.store.store.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/orders")
@@ -30,8 +33,9 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        return new ResponseEntity<>(orderService.create(order), HttpStatus.CREATED);
+    public ResponseEntity<Order> createOrder(@RequestBody CreateOrderWrapper createOrderWrapper) {
+
+        return new ResponseEntity<>(orderService.create(createOrderWrapper), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
